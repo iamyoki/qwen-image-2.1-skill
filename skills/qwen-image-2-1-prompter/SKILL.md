@@ -74,3 +74,11 @@ If the user explicitly requests "API format", "JSON only", "脚本格式", or is
 ```
 *(or for edit tasks: `{"rewritten_prompt": "...", "wh_ratio": "", "ratio_follow": "<image1>"}`)*
 
+---
+
+## Tool & Script Execution Policy
+
+- **Do NOT run validation scripts for standard user requests**: The utility `scripts/validate_prompt.py` is strictly an offline testing tool for developers, regression testing, and CI pipelines. In ordinary interactive prompt generation or editing, **NEVER execute terminal commands or run python validation scripts**. Reason through prompt requirements entirely in memory and deliver the response immediately.
+- **Only run `validate_prompt.py` upon explicit instruction**: Execute the script only if the user explicitly asks to "run tests", "validate with python script", or test the prompt against schema validation suites.
+
+
