@@ -15,6 +15,28 @@ Built strictly upon Alibaba's official prompt rewriting system specifications:
 
 ---
 
+## ⚡ Quick Install
+
+```bash
+npx skills add iamyoki/qwen-image-2.1-skill
+```
+
+<details>
+<summary><b>Manual Installation & Supported Agents</b></summary>
+
+Alternatively, copy the `skills/qwen-image-2-1-prompter` directory into your agent's skill directory:
+
+| Agent / Tool | Target Skill Path |
+|---|---|
+| **Claude Code** | `.claude/skills/qwen-image-2-1-prompter` or `~/.claude/skills/` |
+| **Cursor / Windsurf** | `.agents/skills/qwen-image-2-1-prompter` or `.cursor/skills/` |
+| **Roo Code / Cline** | `.roo/skills/qwen-image-2-1-prompter` |
+| **Antigravity** | `.agents/skills/qwen-image-2-1-prompter` |
+
+</details>
+
+---
+
 ## 🌟 Key Capabilities
 
 1. **Official 8-Step T2I Rewriting**:
@@ -38,34 +60,16 @@ Built strictly upon Alibaba's official prompt rewriting system specifications:
 
 ---
 
-## 📦 Installation via skills.sh
-
-You can install this skill into your favorite agentic coding assistant using [skills.sh](https://skills.sh):
-
-```bash
-# Install using skills CLI
-npx skills add iamyoki/qwen-image-2.1-skill
-```
-
-### Manual Installation
-
-Alternatively, copy the `skills/qwen-image-2-1-prompter` directory into your agent's skill directory:
-
-| Agent / Tool | Target Skill Path |
-|---|---|
-| **Claude Code** | `.claude/skills/qwen-image-2-1-prompter` or `~/.claude/skills/` |
-| **Cursor / Windsurf** | `.agents/skills/qwen-image-2-1-prompter` or `.cursor/skills/` |
-| **Roo Code / Cline** | `.roo/skills/qwen-image-2-1-prompter` |
-| **Antigravity** | `.agents/skills/qwen-image-2-1-prompter` |
-
----
-
 ## 📂 Repository Structure
 
 ```text
 qwen-image-2.1-skill/
+├── LICENSE                                # Apache License 2.0
+├── CONTEXT.md                             # Domain modeling glossary & language protocol
 ├── README.md                              # Main documentation (English)
 ├── README_zh.md                           # Chinese documentation (简体中文)
+├── docs/
+│   └── adr/                               # Architecture Decision Records
 └── skills/
     └── qwen-image-2-1-prompter/
         ├── SKILL.md                       # Core entry point & intent router

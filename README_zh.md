@@ -15,6 +15,28 @@
 
 ---
 
+## ⚡ 快速安装
+
+```bash
+npx skills add iamyoki/qwen-image-2.1-skill
+```
+
+<details>
+<summary><b>手动安装与各平台 Agent 路径</b></summary>
+
+也可以直接将 `skills/qwen-image-2-1-prompter` 目录复制到你对应 Agent 的技能目录中：
+
+| Agent / 工具 | 目标技能路径 |
+|---|---|
+| **Claude Code** | `.claude/skills/qwen-image-2-1-prompter` 或 `~/.claude/skills/` |
+| **Cursor / Windsurf** | `.agents/skills/qwen-image-2-1-prompter` 或 `.cursor/skills/` |
+| **Roo Code / Cline** | `.roo/skills/qwen-image-2-1-prompter` |
+| **Antigravity** | `.agents/skills/qwen-image-2-1-prompter` |
+
+</details>
+
+---
+
 ## 🌟 核心能力
 
 1. **官方 8 步文生图重写分析法 (T2I)**：
@@ -38,34 +60,16 @@
 
 ---
 
-## 📦 通过 skills.sh 安装
-
-你可以使用 [skills.sh](https://skills.sh) 官方 CLI 将本技能一键安装至你常用的 AI 编程助手：
-
-```bash
-# 使用 skills CLI 安装
-npx skills add iamyoki/qwen-image-2.1-skill
-```
-
-### 手动安装指引
-
-也可以直接将 `skills/qwen-image-2-1-prompter` 目录复制到你对应 Agent 的技能目录中：
-
-| Agent / 工具 | 目标技能路径 |
-|---|---|
-| **Claude Code** | `.claude/skills/qwen-image-2-1-prompter` 或 `~/.claude/skills/` |
-| **Cursor / Windsurf** | `.agents/skills/qwen-image-2-1-prompter` 或 `.cursor/skills/` |
-| **Roo Code / Cline** | `.roo/skills/qwen-image-2-1-prompter` |
-| **Antigravity** | `.agents/skills/qwen-image-2-1-prompter` |
-
----
-
 ## 📂 仓库目录结构
 
 ```text
 qwen-image-2.1-skill/
+├── LICENSE                                # Apache License 2.0
+├── CONTEXT.md                             # 领域术语表与规范定义
 ├── README.md                              # 英文主说明文档
 ├── README_zh.md                           # 中文说明文档
+├── docs/
+│   └── adr/                               # 架构决策记录 (ADRs)
 └── skills/
     └── qwen-image-2-1-prompter/           # 技能包主目录
         ├── SKILL.md                       # 技能核心入口、意图路由与自适应格式
@@ -112,7 +116,6 @@ qwen-image-2.1-skill/
 技能包内自带了离线校验脚本，确保生成的 JSON 格式与提示词完全符合 Qwen 2.1 规范要求：
 
 ```bash
-# 运行单元测试套件
 python skills/qwen-image-2-1-prompter/scripts/validate_prompt.py --test
 ```
 
