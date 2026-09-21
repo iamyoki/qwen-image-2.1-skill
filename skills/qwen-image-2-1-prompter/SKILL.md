@@ -81,9 +81,9 @@ If the user explicitly requests "API format", "JSON only", or is running an auto
 ### Example 1: T2I Default Mode
 User prompt: `画一只在雨夜霓虹街头穿黄色雨衣的柴犬，电影感`
 
-**Agent Response Pattern**:
-```markdown
-### 💡 提示词优化解析
+**Expected Agent Output**:
+
+#### 💡 提示词优化解析
 - **画面风格**：电影级写实摄影（Cinematic Realistic Photograph）
 - **画幅比例**：`16:9`（宽屏电影画幅）
 - **构图与光影**：柴犬置于中前景，背景为湿润反光的沥青路面与弥漫着粉紫、青蓝色霓虹辉光的街景，以侧逆光勾勒黄色雨衣轮廓。
@@ -100,4 +100,3 @@ The image is a wide cinematic photograph of an alert Shiba Inu standing on a rai
 
 ---
 *提示：如需将画幅改为手机竖屏（9:16），或增加特定文字招牌（如双引号包裹的 "SHIBA RAMEN"），请随时告知。*
-```
