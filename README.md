@@ -1,4 +1,4 @@
-# Qwen-Image-2.1 Prompter Skill
+# qwen-image-2.1-skill
 
 [English](README.md) | [简体中文](README_zh.md)
 
