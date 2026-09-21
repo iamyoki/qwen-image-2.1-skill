@@ -60,9 +60,8 @@ Used for all standard interactive chat requests. Present the response in three c
 1. **Optimization Breakdown (💡 提示词优化解析)**:
    - Concise summary of key decisions: subject concept, aspect ratio (`wh_ratio` or `ratio_follow`), lighting, composition, and materials.
 2. **Ready-to-Use Prompt (📋 提示词 - 可直接复制)**:
-   - Section title: `#### 📋 提示词（可直接复制）` or `#### 📋 提示词（建议画幅 X:Y · 可直接复制）`.
-   - Clear subtitle or inline tag specifying the recommended aspect ratio (e.g. `> 建议画幅比例：3:4`).
-   - Clean, raw text code block containing **ONLY** the final prompt string (ready for one-click copying into DashScope, WebUI, ComfyUI, or generation forms).
+   - Section title: `#### 📋 提示词（可直接复制）`.
+   - Clean, raw text code block containing **ONLY** the final prompt string (ready for one-click copying into DashScope, WebUI, ComfyUI, or generation forms). Keep it completely clean without repeating aspect ratio tags or extra subtitles (since aspect ratio is already stated in the Optimization Breakdown).
    - **Do NOT output JSON in default mode**.
 3. **Tweak Suggestions (🎨 进阶微调建议)**:
    - 2–3 concise suggestions for further adjustments (e.g., style variations, custom rendered text, or alternative aspect ratios).

@@ -37,6 +37,6 @@ The mutually exclusive aspect ratio specification fields in Qwen 2.1, where `wh_
 _Avoid_: Pixel dimensions in prompt text, combined ratio tags
 
 **Adaptive Output Modes (Default vs API)**:
-The presentation protocol separating human-centric interactive dialogue (Optimization Breakdown + copy-pasteable Prompt with inline aspect ratio + Tweak Suggestions, omitting redundant JSON payloads) from machine-centric automated execution (strict single-line JSON only).
+The presentation protocol separating human-centric interactive dialogue (Optimization Breakdown with aspect ratio + clean copy-pasteable Prompt + Tweak Suggestions, omitting redundant JSON payloads) from machine-centric automated execution (strict single-line JSON only).
 _Avoid_: Duplicating 500-word JSON payloads in interactive chat, markdown wrappers in API responses
 
