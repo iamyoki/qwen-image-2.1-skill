@@ -77,7 +77,7 @@
       "source": "iamyoki/qwen-image-2.1-skill",
       "sourceType": "github",
       "skillPath": "skills/qwen-image-2-1-prompter/SKILL.md",
-      "computedHash": "aa6ff47c83888229993ac305cc307000624ed3e38a1dda6941e917ec2b732782"
+      "computedHash": "26c20408c6394a4a39a8e6b2c5a5958548ac49e80a1a795f24f691d0e4a41c9a"
     },
     "research": {
       "source": "mattpocock/skills",

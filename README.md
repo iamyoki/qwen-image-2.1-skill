@@ -69,8 +69,8 @@ Alternatively, copy or symlink the `skills/qwen-image-2-1-prompter` directory in
    - Gracefully infers visual attributes when running in text-only terminal environments.
 
 4. **Adaptive Output Presentation**:
-   - **Default Mode**: Provides decision breakdowns + copy-ready WebUI Prompt + official single-line JSON payload + tweak suggestions.
-   - **API / Pipeline Mode**: Outputs pure single-line JSON upon request for ComfyUI and programmatic pipelines.
+   - **Default Interactive Mode**: Provides Optimization Breakdown (with aspect ratio) + clean copy-ready Prompt block (`#### 📋 提示词（可直接复制）`) + Tweak Suggestions. Omit duplicate JSON to prevent token bloat and reduce generation latency.
+   - **API / Pipeline Mode**: Outputs pure single-line JSON (`{"rewritten_prompt": "...", "wh_ratio": "..."}`) only upon explicit user request for programmatic and ComfyUI pipelines.
 
 ---
 
@@ -92,7 +92,7 @@ qwen-image-2.1-skill/
         │   ├── edit_rules.md              # Official Edit & multi-image specification
         │   └── cheat_sheet.md             # Vocabulary lookup (styles, materials, ratios)
         └── scripts/
-            └── validate_prompt.py         # Offline prompt & JSON schema validator
+            └── validate_prompt.py         # Offline developer & CI prompt validator
 ```
 
 ---
@@ -103,38 +103,58 @@ qwen-image-2.1-skill/
 **User Input**:
 > "帮我用千问画一张暴雨夜赛博朋克街头的小吃摊，要有浓厚的烟火气和霓虹倒影，电影质感。"
 
-**Agent Output (Default Mode)**:
-- **优化解析**：选定 `16:9` 宽银幕电影画幅，将小吃摊作为主体置于右侧下三分之一，左侧展开雨夜霓虹纵深街道。
-- **WebUI 提示词**：生成约 450 词的高精度英文客观观察段落，明确描述雨水反光、摊位蒸汽、食材质感、暖光灯泡与远处青紫冷色霓虹的冷暖交织。
-- **API JSON**：输出 `{"rewritten_prompt": "...", "wh_ratio": "16:9"}`。
+**Agent Output (Default Interactive Mode)**:
+
+#### 💡 提示词优化解析
+- **主体概念**：暴雨夜赛博朋克街头小吃摊，浓郁烟火气与霓虹电影质感。
+- **画幅比例**：`16:9`（宽银幕电影构图）。
+- **构图与光影**：小吃摊置于右侧前景，左侧纵深延伸雨夜湿滑街道；暖黄白炽灯与背景青蓝、紫红色霓虹灯形成冷暖侧逆光交织。
+
+#### 📋 提示词（可直接复制）
+```text
+The image is a wide cinematic photograph of a vibrant food stall nestled into a rain-drenched cyberpunk alleyway at night. In the right foreground, an open-front wooden and stainless steel food cart emits billowing plumes of translucent white steam that catch the glow of suspended warm incandescent bulbs. The middle-aged vendor, wearing a grease-stained dark apron, tends sizzling metal pans loaded with skewers. Across the wet asphalt ground plane in the lower third, puddles reflect distorted vertical stripes of electric cyan, magenta, and amber neon signage. To the left, the narrow alley recedes into the distance under tangled overhead cables and layered vertical holographic advertisements in English and Japanese. Along the upper edge, towering utilitarian concrete facades rise into an inky rain-streaked night sky. The lighting is dominated by high-contrast directional rim lights from ambient neon signs balanced against the warm incandescent glow radiating from the stall. The overall composition is atmospheric and layered, balancing human warmth against cold industrial grit with rich tonal contrast.
+```
+
+#### 🎨 进阶微调建议
+1. **画幅切换**：若作为移动端壁纸，可调整为 `9:16` 竖屏构图。
+2. **文字招牌**：若需在摊位上方加入特定发光招牌，可指定如 `"CYBER NOODLES"` 字样。
+
+*(Note: If the user explicitly asks for "API format" or "JSON", the agent outputs strictly: `{"rewritten_prompt": "...", "wh_ratio": "16:9"}`)*
 
 ### 2. Multi-Image Editing (Compositing)
 **User Input**:
 > "把 <image2> 中的古代汉服换到 <image1> 中的人物身上，背景和脸不要动。"
 
 **Agent Output**:
-- **优化解析**：设定 `<image1>` 为 Canvas，锁定人物面部、发型特征与背景环境，将 `<image2>` 汉服的布料质感与刺绣纹样无缝迁移。
-- **API JSON**:
-  ```json
-  {
-    "rewritten_prompt": "将<image2>中的传统青色刺绣交领汉服替换到<image1>中人物身上，保持<image1>人物的面部五官、发型、姿态表情以及原图背景完全一致，汉服的面料光泽自然贴合<image1>的环境光照。",
-    "wh_ratio": "",
-    "ratio_follow": "<image1>"
-  }
-  ```
+
+#### 💡 提示词优化解析
+- **编辑目标**：主体汉服替换，精准属性解耦。
+- **Canvas 画布**：`<image1>`（锁定人物五官面部特征与背景环境）。
+- **画幅比例**：继承 `<image1>`（`ratio_follow: <image1>`）。
+
+#### 📋 提示词（可直接复制）
+```text
+将<image2>中的传统青色刺绣交领汉服替换到<image1>中人物身上，保持<image1>人物的面部五官、发型、姿态表情以及原图背景完全一致，汉服的面料光泽自然贴合<image1>的环境光照。
+```
+
+#### 🎨 进阶微调建议
+1. 可进一步细化汉服在领口与袖口的刺绣金线细节。
 
 ---
 
-## 🧪 Testing & Validation
+## 🧪 Developer Testing & Offline Validation
 
-Run the bundled test suite to verify prompt compliance with Qwen 2.1 schema requirements:
+The repository provides an offline schema testing tool for developers and CI pipelines:
 
+> [!NOTE]
+> Autonomous agents are configured via `SKILL.md` **never** to execute this script in conversational chat. It is strictly reserved for manual developer testing and CI workflows.
+
+Run the bundled test suite:
 ```bash
 python skills/qwen-image-2-1-prompter/scripts/validate_prompt.py --test
 ```
 
-Validate any custom JSON output file or string:
-
+Validate a custom JSON payload:
 ```bash
 python skills/qwen-image-2-1-prompter/scripts/validate_prompt.py "{\"rewritten_prompt\": \"...\", \"wh_ratio\": \"16:9\"}"
 ```

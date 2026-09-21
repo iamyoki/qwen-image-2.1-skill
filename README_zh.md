@@ -69,8 +69,8 @@ npx skills add iamyoki/qwen-image-2.1-skill
    - 在纯文本终端中自动降级为基于上下文语义的逻辑推导。
 
 4. **自适应输出呈现 (Adaptive Mode)**：
-   - **交互模式（默认）**：提供“优化决策解析 + 复制即用的 WebUI 提示词 + 官方单行 API JSON 结构 + 微调建议”。
-   - **API / Pipeline 模式**：满足自动化调用需求，直接纯净输出标准单行 JSON。
+   - **交互模式（默认）**：提供“优化决策解析（含画幅比例） + 复制即用的提示词纯代码块（`#### 📋 提示词（可直接复制）`） + 进阶微调建议”。彻底剔除冗余 JSON 字符串，杜绝长文本重复生成并降低生成延迟。
+   - **API / Pipeline 模式**：满足自动化与 ComfyUI 调用需求，仅在用户显式要求时纯净输出单行标准 JSON。
 
 ---
 
@@ -92,7 +92,7 @@ qwen-image-2.1-skill/
         │   ├── edit_rules.md              # 官方 Edit 语言分轨、属性解耦与多图规范
         │   └── cheat_sheet.md             # 材质、镜头、风格、方位词与比例速查表
         └── scripts/
-            └── validate_prompt.py         # 离线验证与自动化测试脚本
+            └── validate_prompt.py         # 开发者离线测试与 CI 验证脚本
 ```
 
 ---
@@ -104,37 +104,57 @@ qwen-image-2.1-skill/
 > "帮我用千问画一张暴雨夜赛博朋克街头的小吃摊，要有浓厚的烟火气和霓虹倒影，电影质感。"
 
 **Agent 响应（默认自适应模式）**：
-- **💡 优化解析**：选定 `16:9` 宽银幕电影比例，将小吃摊作为前景主体置于右侧下三分之一，左侧展开雨夜霓虹纵深街道与反光沥青地面。
-- **📋 WebUI 提示词**：生成约 450 词的高精度英文客观观察段落，详尽描摹雨水反光、摊位热腾腾的白汽、食材色泽、暖黄白炽灯与远处青紫冷色霓虹的交相辉映。
-- **⚙️ 官方 API JSON**：输出 `{"rewritten_prompt": "...", "wh_ratio": "16:9"}`。
+
+#### 💡 提示词优化解析
+- **主体概念**：暴雨夜赛博朋克街头小吃摊，浓郁烟火气与霓虹电影质感。
+- **画幅比例**：`16:9`（宽银幕电影构图）。
+- **构图与光影**：小吃摊置于右侧前景，左侧展开雨夜湿滑街道与反光沥青；暖黄白炽灯与背景青蓝、紫红霓虹灯形成鲜明冷暖侧逆光。
+
+#### 📋 提示词（可直接复制）
+```text
+The image is a wide cinematic photograph of a vibrant food stall nestled into a rain-drenched cyberpunk alleyway at night. In the right foreground, an open-front wooden and stainless steel food cart emits billowing plumes of translucent white steam that catch the glow of suspended warm incandescent bulbs. The middle-aged vendor, wearing a grease-stained dark apron, tends sizzling metal pans loaded with skewers. Across the wet asphalt ground plane in the lower third, puddles reflect distorted vertical stripes of electric cyan, magenta, and amber neon signage. To the left, the narrow alley recedes into the distance under tangled overhead cables and layered vertical holographic advertisements in English and Japanese. Along the upper edge, towering utilitarian concrete facades rise into an inky rain-streaked night sky. The lighting is dominated by high-contrast directional rim lights from ambient neon signs balanced against the warm incandescent glow radiating from the stall. The overall composition is atmospheric and layered, balancing human warmth against cold industrial grit with rich tonal contrast.
+```
+
+#### 🎨 进阶微调建议
+1. **画幅切换**：若作为移动端壁纸，可建议切换为 `9:16` 竖屏构图。
+2. **文字招牌**：若需在摊位上方加入特定发光招牌，可指定如 `"CYBER NOODLES"` 字样。
+
+*(注：当且仅当用户明确要求“API 格式”或“JSON”时，Agent 才会纯净输出：`{"rewritten_prompt": "...", "wh_ratio": "16:9"}`)*
 
 ### 2. 多图参考与编辑 (Compositing)
 **用户指令**：
 > "把 <image2> 中的古代汉服换到 <image1> 中的人物身上，背景和脸不要动。"
 
 **Agent 响应**：
-- **💡 优化解析**：设定 `<image1>` 为 Canvas 画布，锁定人物五官面部特征与背景环境，将 `<image2>` 汉服的丝绸质感与刺绣纹样无缝迁移并适配当前环境光。
-- **⚙️ 官方 API JSON**：
-  ```json
-  {
-    "rewritten_prompt": "将<image2>中的传统青色刺绣交领汉服替换到<image1>中人物身上，保持<image1>人物的面部五官、发型、姿态表情以及原图背景完全一致，汉服的面料光泽自然贴合<image1>的环境光照。",
-    "wh_ratio": "",
-    "ratio_follow": "<image1>"
-  }
-  ```
+
+#### 💡 提示词优化解析
+- **编辑目标**：主体汉服替换，精准属性解耦。
+- **Canvas 画布**：`<image1>`（锁定人物五官面部特征与背景环境）。
+- **画幅比例**：继承 `<image1>`（`ratio_follow: <image1>`）。
+
+#### 📋 提示词（可直接复制）
+```text
+将<image2>中的传统青色刺绣交领汉服替换到<image1>中人物身上，保持<image1>人物的面部五官、发型、姿态表情以及原图背景完全一致，汉服的面料光泽自然贴合<image1>的环境光照。
+```
+
+#### 🎨 进阶微调建议
+1. 可进一步细化汉服在领口与袖口的刺绣金线细节。
 
 ---
 
-## 🧪 离线测试与格式校验
+## 🧪 开发者离线测试与校验
 
-技能包内自带了离线校验脚本，确保生成的 JSON 格式与提示词完全符合 Qwen 2.1 规范要求：
+技能包内自带了离线校验脚本，供开发者自测与 GitHub Actions CI 流水线运行：
 
+> [!NOTE]
+> 在 `SKILL.md` 中已明文约束，自主 Agent 在日常交互对话中**绝不**调用此脚本，避免无意义的命令行子进程开销与依赖风险。该脚本仅供开发者手动执行或 CI 测试使用。
+
+运行内置测试套件：
 ```bash
 python skills/qwen-image-2-1-prompter/scripts/validate_prompt.py --test
 ```
 
-校验任意自定义输出文件或字符串：
-
+校验任意自定义输出 JSON 字符串：
 ```bash
 python skills/qwen-image-2-1-prompter/scripts/validate_prompt.py "{\"rewritten_prompt\": \"...\", \"wh_ratio\": \"16:9\"}"
 ```
