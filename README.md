@@ -1,5 +1,7 @@
 # Qwen-Image-2.1 Prompter Skill
 
+[English](README.md) | [简体中文](README_zh.md)
+
 [![Skills.sh Compatible](https://img.shields.io/badge/skills.sh-compatible-blue.svg)](https://skills.sh)
 [![Model](https://img.shields.io/badge/Target_Model-Qwen--Image--2.1-orange.svg)](https://qwen.ai/blog?id=qwen-image-2.1)
 [![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)](LICENSE)
@@ -42,7 +44,7 @@ You can install this skill into your favorite agentic coding assistant using [sk
 
 ```bash
 # Install using skills CLI
-npx skills add <your-github-username>/qwen-image-2.1-skill
+npx skills add iamyoki/qwen-image-2.1-skill
 ```
 
 ### Manual Installation
@@ -62,7 +64,8 @@ Alternatively, copy the `skills/qwen-image-2-1-prompter` directory into your age
 
 ```text
 qwen-image-2.1-skill/
-├── README.md                              # Main documentation & skills.sh guide
+├── README.md                              # Main documentation (English)
+├── README_zh.md                           # Chinese documentation (简体中文)
 └── skills/
     └── qwen-image-2-1-prompter/
         ├── SKILL.md                       # Core entry point & intent router
