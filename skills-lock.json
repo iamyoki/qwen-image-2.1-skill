@@ -73,6 +73,12 @@
       "skillPath": "skills/engineering/prototype/SKILL.md",
       "computedHash": "d3fc74689bd993e39c44bfae510d014eecffbeec2922764b065377fd1327c0f6"
     },
+    "qwen-image-2-1-prompter": {
+      "source": "iamyoki/qwen-image-2.1-skill",
+      "sourceType": "github",
+      "skillPath": "skills/qwen-image-2-1-prompter/SKILL.md",
+      "computedHash": "60de2c3ac90b5bf2ab0ce055a6ad492cad10b3522e2451ba2df8940ed47bc842"
+    },
     "research": {
       "source": "mattpocock/skills",
       "sourceType": "github",

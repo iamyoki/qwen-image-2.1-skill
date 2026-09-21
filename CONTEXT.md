@@ -35,3 +35,8 @@ _Avoid_: Base image, reference image, background photo
 **wh_ratio vs ratio_follow**:
 The mutually exclusive aspect ratio specification fields in Qwen 2.1, where `wh_ratio` defines a geometric ratio and `ratio_follow` binds to a specific input image tag.
 _Avoid_: Pixel dimensions in prompt text, combined ratio tags
+
+**Adaptive Output Modes (Default vs API)**:
+The presentation protocol separating human-centric interactive dialogue (Optimization Breakdown + copy-pasteable Prompt with inline aspect ratio + Tweak Suggestions, omitting redundant JSON payloads) from machine-centric automated execution (strict single-line JSON only).
+_Avoid_: Duplicating 500-word JSON payloads in interactive chat, markdown wrappers in API responses
+
