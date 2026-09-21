@@ -17,21 +17,35 @@
 
 ## ⚡ 快速安装
 
+### 方式 1：一键发给你的 AI Agent（推荐 / 小白零配置首选 ⭐）
+
+直接将下方提示词复制发送给你的 AI 编程助手（Claude Code、Cursor、Windsurf、Roo Code、Trae 等）：
+
+```text
+请帮我安装 Qwen-Image-2.1 提示词专家技能：从 https://github.com/iamyoki/qwen-image-2.1-skill 安装，或直接在终端运行 `npx skills add iamyoki/qwen-image-2.1-skill`。
+```
+
+### 方式 2：终端一行命令（通过 skills.sh）
+
 ```bash
 npx skills add iamyoki/qwen-image-2.1-skill
 ```
 
 <details>
-<summary><b>手动安装与各平台 Agent 路径</b></summary>
+<summary><b>方式 3：手动安装与全主流 Agent 路径支持</b></summary>
 
-也可以直接将 `skills/qwen-image-2-1-prompter` 目录复制到你对应 Agent 的技能目录中：
+也可以直接将 `skills/qwen-image-2-1-prompter` 目录复制或软链接到对应 Agent 的技能目录中：
 
-| Agent / 工具 | 目标技能路径 |
+| Agent / IDE / 工具 | 目标技能路径 |
 |---|---|
 | **Claude Code** | `.claude/skills/qwen-image-2-1-prompter` 或 `~/.claude/skills/` |
-| **Cursor / Windsurf** | `.agents/skills/qwen-image-2-1-prompter` 或 `.cursor/skills/` |
-| **Roo Code / Cline** | `.roo/skills/qwen-image-2-1-prompter` |
-| **Antigravity** | `.agents/skills/qwen-image-2-1-prompter` |
+| **Cursor** | `.cursor/skills/qwen-image-2-1-prompter` 或 `.agents/skills/` |
+| **Windsurf** | `.windsurf/skills/qwen-image-2-1-prompter` 或 `.agents/skills/` |
+| **Roo Code / Cline** | `.roo/skills/qwen-image-2-1-prompter` 或 `.cline/skills/` |
+| **Trae / Copilot Workspace** | `.trae/skills/qwen-image-2-1-prompter` 或 `.agents/skills/` |
+| **OpenDevin / Devin / Codex** | `.agents/skills/qwen-image-2-1-prompter` |
+| **Antigravity / Gemini CLI** | `.agents/skills/qwen-image-2-1-prompter` |
+| **所有支持 skills.sh 标准的 Agent** | 理论兼容所有支持通用 Markdown 技能规范的智能体环境 |
 
 </details>
 

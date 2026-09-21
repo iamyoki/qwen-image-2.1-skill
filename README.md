@@ -17,21 +17,35 @@ Built strictly upon Alibaba's official prompt rewriting system specifications:
 
 ## ⚡ Quick Install
 
+### Method 1: Ask Your AI Agent (Recommended / Zero-Setup)
+
+Copy and paste this instruction directly to your AI coding assistant (Claude Code, Cursor, Windsurf, Roo, Trae, etc.):
+
+```text
+Please install the Qwen-Image-2.1 prompter skill from https://github.com/iamyoki/qwen-image-2.1-skill or by running `npx skills add iamyoki/qwen-image-2.1-skill`.
+```
+
+### Method 2: One-Line CLI (via skills.sh)
+
 ```bash
 npx skills add iamyoki/qwen-image-2.1-skill
 ```
 
 <details>
-<summary><b>Manual Installation & Supported Agents</b></summary>
+<summary><b>Method 3: Manual Installation & All Supported Agents</b></summary>
 
-Alternatively, copy the `skills/qwen-image-2-1-prompter` directory into your agent's skill directory:
+Alternatively, copy or symlink the `skills/qwen-image-2-1-prompter` directory into your agent's skill directory:
 
-| Agent / Tool | Target Skill Path |
+| Agent / IDE / Tool | Target Skill Path |
 |---|---|
 | **Claude Code** | `.claude/skills/qwen-image-2-1-prompter` or `~/.claude/skills/` |
-| **Cursor / Windsurf** | `.agents/skills/qwen-image-2-1-prompter` or `.cursor/skills/` |
-| **Roo Code / Cline** | `.roo/skills/qwen-image-2-1-prompter` |
-| **Antigravity** | `.agents/skills/qwen-image-2-1-prompter` |
+| **Cursor** | `.cursor/skills/qwen-image-2-1-prompter` or `.agents/skills/` |
+| **Windsurf** | `.windsurf/skills/qwen-image-2-1-prompter` or `.agents/skills/` |
+| **Roo Code / Cline** | `.roo/skills/qwen-image-2-1-prompter` or `.cline/skills/` |
+| **Trae / Copilot Workspace** | `.trae/skills/qwen-image-2-1-prompter` or `.agents/skills/` |
+| **OpenDevin / Devin / Codex** | `.agents/skills/qwen-image-2-1-prompter` |
+| **Antigravity / Gemini CLI** | `.agents/skills/qwen-image-2-1-prompter` |
+| **Any Agent with skills.sh standard** | Compatible with all autonomous agents supporting standard Markdown skills |
 
 </details>
 
