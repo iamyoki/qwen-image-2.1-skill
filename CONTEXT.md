@@ -40,3 +40,7 @@ _Avoid_: Pixel dimensions in prompt text, combined ratio tags
 The presentation protocol separating human-centric interactive dialogue (Optimization Breakdown with aspect ratio + clean copy-pasteable Prompt + Tweak Suggestions, omitting redundant JSON payloads) from machine-centric automated execution (strict single-line JSON only).
 _Avoid_: Duplicating 500-word JSON payloads in interactive chat, markdown wrappers in API responses
 
+**Zero-Drift Official Wrapper**:
+The architectural guarantee that this skill acts strictly as a lightweight intent router and progressive-disclosure loader conforming to the `skills.sh` standard, while keeping the prompt rewriting and image editing rules 100% faithful to Alibaba's official system prompts without subjective modifications.
+_Avoid_: Custom rewrite hacks, prompt tweaking wrappers, opinionated re-prompting
+

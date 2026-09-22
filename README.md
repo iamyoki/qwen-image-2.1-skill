@@ -6,9 +6,13 @@
 [![Model](https://img.shields.io/badge/Target_Model-Qwen--Image--2.1-orange.svg)](https://qwen.ai/blog?id=qwen-image-2.1)
 [![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)](LICENSE)
 
-An agentic skill that rewrites, optimizes, and structures image generation and editing prompts specifically tailored for Alibaba's **Qwen-Image-2.1** diffusion model.
+![Qwen-Image-2.1 Skill Cover](assets/cover.jpg)
 
-Built strictly upon Alibaba's official prompt rewriting system specifications:
+> Generated 100% via Qwen-Image-2.1 T2I and Edit; this skill is unofficial, providing only lightweight intent routing while strictly adhering to Alibaba's official prompt rewriting system specifications.
+
+A skills.sh-compatible prompt engineering skill for Qwen-Image-2.1, providing out-of-the-box text-to-image (8-step observer prose) and image editing (attribute disentanglement and dual-track language) for autonomous agents and coding assistants.
+
+Official system prompt specifications:
 - **Text-to-Image (T2I)**: [system_prompt_t2i.txt](https://github.com/QwenLM/Qwen-Image-2.1/blob/main/prompt_rewrite/prompts/system_prompt_t2i.txt)
 - **Image Editing (Edit)**: [system_prompt_edit.txt](https://github.com/QwenLM/Qwen-Image-2.1/blob/main/prompt_rewrite/prompts/system_prompt_edit.txt)
 - **Technical Blog**: [Qwen-Image-2.1 Announcement](https://qwen.ai/blog?id=qwen-image-2.1)

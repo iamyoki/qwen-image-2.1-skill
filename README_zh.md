@@ -6,9 +6,13 @@
 [![Model](https://img.shields.io/badge/目标模型-Qwen--Image--2.1-orange.svg)](https://qwen.ai/blog?id=qwen-image-2.1)
 [![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)](LICENSE)
 
-一个专为阿里巴巴最新 **Qwen-Image-2.1** 图像生成模型量身定制的 Agent 技能。用于将用户简短、模糊或复杂的想法，重写重构为符合 Qwen 2.1 底层语义与渲染空间的高精度提示词。
+![Qwen-Image-2.1 Skill 封面](assets/cover.jpg)
 
-严格基于阿里官方提示词重写系统规范实现：
+> 该图及文字排版 100% 用 Qwen-Image-2.1 文生图+编辑生成；技能非官方，仅轻量包装意图路由，底层生成/编辑规则完全遵循阿里官方系统提示词。
+
+基于 skills.sh 规范的 Qwen-Image-2.1 提示词专家技能，支持文生图（8步客观观察法）与图像编辑（双语言分轨与强力属性解耦），开箱即用适配主流 AI 编程助手与智能体。
+
+官方系统提示词源码：
 - **文生图规范 (T2I)**：[system_prompt_t2i.txt](https://github.com/QwenLM/Qwen-Image-2.1/blob/main/prompt_rewrite/prompts/system_prompt_t2i.txt)
 - **图像编辑与多图规范 (Edit)**：[system_prompt_edit.txt](https://github.com/QwenLM/Qwen-Image-2.1/blob/main/prompt_rewrite/prompts/system_prompt_edit.txt)
 - **官方技术博客**：[Qwen-Image-2.1 发布说明](https://qwen.ai/blog?id=qwen-image-2.1)
